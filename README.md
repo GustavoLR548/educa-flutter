@@ -9,7 +9,7 @@
 * [ ] Exercício de Matemática 
 * [ ] Exercício do Alfabeto
 
-## Objetivo a mais 
+## Opcionais
 
 * [x] Banco de dados usando Firebase 
 * [x] Permanência de dados 
