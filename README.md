@@ -1,17 +1,14 @@
-# educa
+# Educa, uma aplicativo educativo feito em flutter
 
-A new Flutter project.
+## Objetivos
 
-## Getting Started
+* [x] Página de login
+* [X] Página principal
+* [ ] Exercício de Matemática 
+* [ ] Exercício do Alfabeto
 
-This project is a starting point for a Flutter application.
+## Objetivo a mais 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# educa-flutter
+* [x] Banco de dados usando Firebase 
+* [x] Permanência de dados 
+* [X] Página de perfil
