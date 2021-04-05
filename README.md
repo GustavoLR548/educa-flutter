@@ -1,4 +1,6 @@
-# Educa, uma aplicativo educativo feito em flutter
+# Educa
+
+# uma aplicativo educativo feito em Flutter
 
 ## Objetivos
 
