@@ -1,8 +1,10 @@
 import 'package:educa/models/exercicio.dart';
+import 'package:educa/widgets/exercicio/MyCarouselPlayer.dart';
 import 'package:flutter/material.dart';
 
 class ExercicioScreen extends StatelessWidget {
   static const routeName = '/tela-exercicio';
+
   @override
   Widget build(BuildContext context) {
     final exercicioAtual =
@@ -14,16 +16,19 @@ class ExercicioScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Column(children: [
-          if (!exercicioAtual.tutorial['texto'].isEmpty)
-            Text(exercicioAtual.tutorial['texto']),
-          Center(
-              child: ElevatedButton(
-                  onPressed: null, child: Text('Finalizar teste')))
-        ]),
-      )),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (!exercicioAtual.exercicio['carouselPlayer'].isEmpty)
+                MyCarouselPlayer(
+                    exercicioAtual.exercicio['carouselPlayer']['top'],
+                    exercicioAtual.exercicio['carouselPlayer']['bottom']),
+              Center(
+                  child: ElevatedButton(
+                      onPressed: null, child: Text('Finalizar teste')))
+            ]),
+      ),
     );
   }
 }

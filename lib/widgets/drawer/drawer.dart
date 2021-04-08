@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:educa/provider/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   List<Widget> buildDividedListTile(
@@ -51,7 +52,7 @@ class AppDrawer extends StatelessWidget {
                   .copyWith(color: Colors.red),
             ),
             onTap: () {
-              FirebaseAuth.instance.signOut();
+              Provider.of<Auth>(context, listen: false).logout();
             })
       ],
     ));

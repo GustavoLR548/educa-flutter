@@ -66,12 +66,11 @@ class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     Widget confirmButton = (widget._isLoading)
-        ? CircularProgressIndicator()
+        ? Center(child: CircularProgressIndicator())
         : Center(
             child: OutlinedButton(
                 child: Text(_isLogin ? 'Entrar' : 'Inscrever-se'),
                 onPressed: () => _trySubmit(context)));
-
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeIn,
@@ -109,9 +108,7 @@ class _AuthFormState extends State<AuthForm> {
                     return null;
                   },
                   onSaved: (value) {
-                    setState(() {
-                      _formValues['email'] = value;
-                    });
+                    _formValues['email'] = value;
                   },
                 ),
                 if (!_isLogin)
@@ -127,9 +124,7 @@ class _AuthFormState extends State<AuthForm> {
                       return null;
                     },
                     onSaved: (value) {
-                      setState(() {
-                        _formValues['username'] = value;
-                      });
+                      _formValues['username'] = value;
                     },
                   ),
                 TextFormField(
@@ -143,9 +138,7 @@ class _AuthFormState extends State<AuthForm> {
                     return null;
                   },
                   onSaved: (value) {
-                    setState(() {
-                      _formValues['password'] = value;
-                    });
+                    _formValues['password'] = value;
                   },
                 ),
                 const SizedBox(

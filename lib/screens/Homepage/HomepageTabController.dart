@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educa/provider/auth.dart';
 import 'package:educa/screens/Homepage/ExerciciosAlfabeto.dart';
 import 'package:educa/screens/Homepage/ExerciciosNumeros.dart';
 import 'package:educa/screens/Homepage/Perfil.dart';
-import 'package:educa/screens/Splashscreen.dart';
 import 'package:educa/widgets/drawer/drawer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomepageTabController extends StatefulWidget {
   @override
@@ -22,27 +21,16 @@ class _HomepageTabControllerState extends State<HomepageTabController> {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
-    return FutureBuilder(
-        future:
-            FirebaseFirestore.instance.collection('users').doc(user.uid).get(),
-        builder: (ctx, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return SplashScreen();
-          } else {
-            return _buildPage(snapshot.data.data());
-          }
-        });
-  }
+    final userData = Provider.of<Auth>(context).currUser;
 
-  Widget _buildPage(Map<String, dynamic> user) {
     List<Map<String, Object>> _pages;
 
     _pages = [
       {'page': ExerciciosAlfabeto(), 'title': 'Alfabeto'},
       {'page': ExerciciosNumeros(), 'title': 'Matemática'},
       {
-        'page': Perfil(user['username'], user['email'], user['image_url']),
+        'page': Perfil(
+            userData['username'], userData['email'], userData['image_url']),
         'title': 'Perfil'
       }
     ];

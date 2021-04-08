@@ -1,12 +1,11 @@
 import 'dart:io';
 
+import 'package:educa/provider/auth.dart';
 import 'package:educa/widgets/auth/auth_form.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -14,41 +13,19 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final _auth = FirebaseAuth.instance;
   var _isLoading = false;
 
   void _submitAuthForm(String email, String password, String username,
       bool isLogin, File imageFile, BuildContext ctx) async {
-    UserCredential authResult;
-
     try {
       setState(() {
         _isLoading = true;
       });
       if (isLogin) {
-        authResult = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
+        await Provider.of<Auth>(context, listen: false).signIn(email, password);
       } else {
-        authResult = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
-
-        final ref = FirebaseStorage.instance
-            .ref()
-            .child('user_image')
-            .child(authResult.user.uid + '.jpg');
-
-        await ref.putFile(imageFile);
-
-        final url = await ref.getDownloadURL();
-
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(authResult.user.uid)
-            .set({
-          'username': username,
-          'email': email,
-          'image_url': url,
-        });
+        await Provider.of<Auth>(context, listen: false)
+            .signUp(username, email, password, imageFile);
       }
     } on PlatformException catch (error) {
       var message = 'Um erro ocorreu, por favor olhe usas credenciais';
@@ -65,9 +42,14 @@ class _AuthScreenState extends State<AuthScreen> {
         _isLoading = false;
       });
     } catch (error) {
-      print(error);
+      showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+                title: Text('Um erro ocorreu'),
+                content: Text('A senha inserida está incorreta'),
+              ));
       setState(() {
-        _isLoading = true;
+        _isLoading = false;
       });
     }
   }

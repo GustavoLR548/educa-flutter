@@ -6,7 +6,7 @@ class MusicPlayer extends StatefulWidget {
   final String musicUrl;
   final String title;
 
-  const MusicPlayer({Key key, @required this.title, @required this.musicUrl})
+  const MusicPlayer({Key key, this.title = '', @required this.musicUrl})
       : super(key: key);
 
   @override
@@ -90,13 +90,14 @@ class _MusicPlayerState extends State<MusicPlayer> {
       child: Column(
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            Text(
-              widget.title,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2
-                  .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-            ),
+            if (!widget.title.isEmpty)
+              Text(
+                widget.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
             TextButton(
               onPressed: () => handlePausePlay(),
               child: Icon(
