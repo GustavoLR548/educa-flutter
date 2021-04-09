@@ -49,12 +49,12 @@ class Exercicios with ChangeNotifier {
             'Z'
           ],
           'bottom': [
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
-            'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/A.mp3?raw=true',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/B.mp3?raw=true',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/C.mp3?raw=true',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/D.mp3?raw=true',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/E.mp3?raw=true',
+            'https://github.com/MysteRys337/educa-flutter-mp3/blob/main/alf/F.mp3?raw=true',
             'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
             'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
             'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
