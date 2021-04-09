@@ -3,13 +3,18 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class MusicPlayer extends StatefulWidget {
-  final String musicUrl;
+  final String initialMusicUrl;
   final String title;
   final bool autoplay;
+  final bool hideSlider;
 
-  const MusicPlayer(
-      {Key key, this.title = '', @required this.musicUrl, this.autoplay = true})
-      : super(key: key);
+  const MusicPlayer({
+    Key key,
+    this.title = '',
+    @required this.initialMusicUrl,
+    this.autoplay = true,
+    this.hideSlider = false,
+  }) : super(key: key);
 
   @override
   _MusicPlayerState createState() => _MusicPlayerState();
@@ -47,10 +52,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
     advancedPlayer.onAudioPositionChanged.listen((p) => setState(() {
           _position = p;
         }));
-    this.advancedPlayer.setUrl(widget.musicUrl);
-    this.advancedPlayer.setReleaseMode(ReleaseMode.LOOP);
-    this.advancedPlayer.play(widget.musicUrl, isLocal: false);
-    this.isActive = widget.autoplay;
   }
 
   void deactivate() {
@@ -95,6 +96,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      this.advancedPlayer.setUrl(widget.initialMusicUrl);
+      this.advancedPlayer.setReleaseMode(ReleaseMode.STOP);
+      this.advancedPlayer.play(widget.initialMusicUrl, isLocal: false);
+      this.isActive = widget.autoplay;
+    });
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -114,18 +122,20 @@ class _MusicPlayerState extends State<MusicPlayer> {
                 color: Colors.white,
               ),
             ),
-            TextButton(
-              onPressed: () => handleStop(),
-              child: const Icon(Icons.stop, color: Colors.white),
-            ),
+            if (!widget.hideSlider)
+              TextButton(
+                onPressed: () => handleStop(),
+                child: const Icon(Icons.stop, color: Colors.white),
+              ),
           ]),
-          Slider(
-              value: _position.inSeconds.toDouble(),
-              min: 0.0,
-              max: _duration.inSeconds.toDouble(),
-              activeColor: Colors.white,
-              inactiveColor: Colors.white10,
-              onChanged: (double value) => handleSlideChange(value))
+          if (!widget.hideSlider)
+            Slider(
+                value: _position.inSeconds.toDouble(),
+                min: 0.0,
+                max: _duration.inSeconds.toDouble(),
+                activeColor: Colors.white,
+                inactiveColor: Colors.white10,
+                onChanged: (double value) => handleSlideChange(value))
         ],
       ),
     );

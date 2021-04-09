@@ -25,7 +25,7 @@ class Tutorial extends StatelessWidget {
                       const BorderRadius.all(const Radius.circular(7))),
               child: MusicPlayer(
                   title: 'Explicação',
-                  musicUrl: exercicioAtual.falaProfessorUrl)),
+                  initialMusicUrl: exercicioAtual.falaProfessorUrl)),
           Text(
             exercicioAtual.titulo,
             style: Theme.of(context).textTheme.headline3,

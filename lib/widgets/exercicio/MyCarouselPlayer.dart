@@ -20,6 +20,7 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
   List<Widget> slider = [];
   List<int> alreadyVisitedPages = [];
   bool _hasInitiated = true;
+  String currentAudio = '';
 
   static const availableColors = [
     Colors.red,
@@ -39,6 +40,7 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
     super.didChangeDependencies();
 
     if (_hasInitiated) {
+      currentAudio = widget.audioList[currMusicIndex];
       alreadyVisitedPages.add(0);
       for (int i = 0; i < widget.audioList.length; i++) {
         slider.add(Center(
@@ -73,6 +75,7 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
 
   @override
   Widget build(BuildContext context) {
+    print(currentAudio);
     return Padding(
       padding: const EdgeInsets.only(top: 45),
       child: Column(
@@ -83,11 +86,12 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
                   onPageChanged: (index, reason) {
                     setState(() {
                       currMusicIndex = index;
+                      currentAudio = widget.audioList[currMusicIndex];
                       if (!alreadyVisitedPages.contains(index))
                         alreadyVisitedPages.add(index);
-
-                      if (_finishedExercise()) widget.onFinish();
                     });
+
+                    if (_finishedExercise()) widget.onFinish();
                   }),
               items: slider),
           const SizedBox(
@@ -101,8 +105,9 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
                   borderRadius:
                       const BorderRadius.all(const Radius.circular(7))),
               child: MusicPlayer(
-                musicUrl: widget.audioList[currMusicIndex],
+                initialMusicUrl: currentAudio,
                 autoplay: false,
+                hideSlider: true,
               )),
         ],
       ),
