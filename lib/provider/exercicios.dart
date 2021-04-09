@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Exercicios with ChangeNotifier {
   List<Exercicio> _items = [
     Exercicio(
-      id: '1',
+      id: 'alph1',
       titulo: 'Início: Alfabeto',
       professor: 'Gustavo LR',
       capaUrl:
@@ -16,8 +16,7 @@ class Exercicios with ChangeNotifier {
       tutorial: {
         'texto':
             'Seja bem vindo ao primeiro exercicio do alfabeto, não há necessidade para se apressar, vamos passo-a-passo , e você mesmo irá enxergar o quão simples é',
-        'imagem':
-            'https://cdn5.vectorstock.com/i/1000x1000/88/39/funny-colorful-alphabet-vector-6558839.jpg'
+        'imagem': 'https://i.imgur.com/MXzF7yV.png'
       },
       exercicio: {
         'carouselPlayer': {
@@ -82,7 +81,7 @@ class Exercicios with ChangeNotifier {
       tempoEstimado: 10,
     ),
     Exercicio(
-      id: '2',
+      id: 'math2',
       titulo: 'Início: Matematica',
       professor: 'Gustavo LR',
       capaUrl: 'https://i.ytimg.com/vi/0sEUdmtyJ3U/maxresdefault.jpg',

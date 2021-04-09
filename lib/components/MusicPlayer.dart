@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 class MusicPlayer extends StatefulWidget {
   final String musicUrl;
   final String title;
+  final bool autoplay;
 
-  const MusicPlayer({Key key, this.title = '', @required this.musicUrl})
+  const MusicPlayer(
+      {Key key, this.title = '', @required this.musicUrl, this.autoplay = true})
       : super(key: key);
 
   @override
@@ -23,8 +25,15 @@ class _MusicPlayerState extends State<MusicPlayer> {
 
   @override
   void initState() {
-    initPlayer();
     super.initState();
+    initPlayer();
+  }
+
+  @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
   }
 
   void initPlayer() {
@@ -41,17 +50,17 @@ class _MusicPlayerState extends State<MusicPlayer> {
     this.advancedPlayer.setUrl(widget.musicUrl);
     this.advancedPlayer.setReleaseMode(ReleaseMode.LOOP);
     this.advancedPlayer.play(widget.musicUrl, isLocal: false);
-    this.isActive = true;
+    this.isActive = widget.autoplay;
   }
 
   void deactivate() {
-    this.advancedPlayer.stop();
     super.deactivate();
+    this.advancedPlayer.stop();
   }
 
   void dispose() {
-    advancedPlayer.dispose();
     super.dispose();
+    advancedPlayer.dispose();
   }
 
   void seekToSecond(int second) {
@@ -90,7 +99,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
       child: Column(
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-            if (!widget.title.isEmpty)
+            if (widget.title.isNotEmpty)
               Text(
                 widget.title,
                 style: Theme.of(context)

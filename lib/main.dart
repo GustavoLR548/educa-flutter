@@ -88,6 +88,8 @@ class MyApp extends StatelessWidget {
                             return AuthScreen();
                           }),
                       routes: {
+                        HomepageTabController.routeName: (ctx) =>
+                            HomepageTabController(),
                         Tutorial.routeName: (ctx) => Tutorial(),
                         ExercicioScreen.routeName: (ctx) => ExercicioScreen(),
                       },

@@ -20,12 +20,14 @@ class ExercicioCard extends StatelessWidget {
       @required this.onTap});
 
   Widget build(BuildContext context) {
-    final foodImage = Image.network(
-      imageUrl,
-      height: 250,
-      width: double.infinity,
-      fit: BoxFit.cover,
-    );
+    final foodImage = FadeInImage(
+        height: 250,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        placeholder: AssetImage('assets/images/placeholder.jpg'),
+        image: NetworkImage(
+          imageUrl,
+        ));
 
     return InkWell(
         onTap: onTap,

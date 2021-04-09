@@ -6,7 +6,11 @@ class Perfil extends StatelessWidget {
   final String name;
   final String email;
 
-  const Perfil(this.name, this.email, this.imageUrl);
+  final int pontuacaoAlph;
+  final int pontuacaoMath;
+
+  const Perfil(this.name, this.email, this.imageUrl, this.pontuacaoAlph,
+      this.pontuacaoMath);
 
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +44,7 @@ class Perfil extends StatelessWidget {
                           Icons.star,
                           color: Colors.yellow,
                         ),
-                        Text('0'),
+                        Text(pontuacaoAlph.toString()),
                         const SizedBox(
                           width: 15,
                         ),
@@ -48,7 +52,7 @@ class Perfil extends StatelessWidget {
                           Icons.mode_outlined,
                           color: Colors.yellow,
                         ),
-                        Text('0'),
+                        Text(pontuacaoMath.toString()),
                       ],
                     )
                   ],

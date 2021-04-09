@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ExerciciosAlfabeto extends StatelessWidget {
+  final Map<String, dynamic> exercises;
+
+  ExerciciosAlfabeto(this.exercises);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -14,16 +18,23 @@ class ExerciciosAlfabeto extends StatelessWidget {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: alfabeto.length,
-            itemBuilder: (context, index) => ExercicioCard(
+            itemBuilder: (context, index) {
+              bool terminado;
+              if (exercises == null)
+                terminado = false;
+              else
+                terminado = exercises[alfabeto[index].id] == true;
+              return ExercicioCard(
                   imageUrl: alfabeto[index].capaUrl,
                   title: alfabeto[index].titulo,
                   dificuldade: alfabeto[index].dificuldadeString,
                   tempoEstimado: alfabeto[index].tempoEstimado,
+                  terminado: terminado,
                   onTap: () {
                     Navigator.of(context).pushNamed(Tutorial.routeName,
                         arguments: alfabeto[index]);
-                  },
-                ));
+                  });
+            });
       }),
     );
   }

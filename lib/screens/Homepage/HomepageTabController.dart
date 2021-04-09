@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomepageTabController extends StatefulWidget {
+  static const routeName = '/homepage';
   @override
   _HomepageTabControllerState createState() => _HomepageTabControllerState();
 }
@@ -22,24 +23,22 @@ class _HomepageTabControllerState extends State<HomepageTabController> {
   @override
   Widget build(BuildContext context) {
     final userData = Provider.of<Auth>(context).currUser;
-
     List<Map<String, Object>> _pages;
-
     _pages = [
-      {'page': ExerciciosAlfabeto(), 'title': 'Alfabeto'},
-      {'page': ExerciciosNumeros(), 'title': 'Matemática'},
+      {'page': ExerciciosAlfabeto(userData['exercises']), 'title': 'Alfabeto'},
+      {'page': ExerciciosNumeros(userData['exercises']), 'title': 'Matemática'},
       {
-        'page': Perfil(
-            userData['username'], userData['email'], userData['image_url']),
+        'page': Perfil(userData['username'], userData['email'],
+            userData['image_url'], userData['alph'], userData['math']),
         'title': 'Perfil'
       }
     ];
-
     return DefaultTabController(
       length: _pages.length,
       child: Scaffold(
         appBar: AppBar(
-          title: _appBarTitle(),
+          title: _appBarTitle(
+              _selectedPageIndex == 0 ? userData['alph'] : userData['math']),
           centerTitle: true,
         ),
         drawer: AppDrawer(),
@@ -73,9 +72,9 @@ class _HomepageTabControllerState extends State<HomepageTabController> {
     );
   }
 
-  Widget _appBarTitle() {
+  Widget _appBarTitle(int points) {
     Widget result;
-
+    String pontuacao = points.toString() == 'null' ? '0' : points.toString();
     switch (_selectedPageIndex) {
       case 0:
         result = Padding(
@@ -86,7 +85,7 @@ class _HomepageTabControllerState extends State<HomepageTabController> {
                 Icons.star,
                 color: Colors.yellow,
               ),
-              Text('0')
+              Text(pontuacao)
             ],
           ),
         );
@@ -100,7 +99,7 @@ class _HomepageTabControllerState extends State<HomepageTabController> {
                 Icons.mode_outlined,
                 color: Colors.yellow,
               ),
-              Text('0')
+              Text(pontuacao)
             ],
           ),
         );

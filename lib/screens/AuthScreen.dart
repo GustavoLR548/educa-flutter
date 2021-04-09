@@ -44,9 +44,11 @@ class _AuthScreenState extends State<AuthScreen> {
     } catch (error) {
       showDialog(
           context: context,
-          builder: (ctx) => AlertDialog(
-                title: Text('Um erro ocorreu'),
-                content: Text('A senha inserida está incorreta'),
+          builder: (ctx) => FittedBox(
+                child: AlertDialog(
+                  title: Text('Um erro ocorreu'),
+                  content: Text('A senha inserida está incorreta'),
+                ),
               ));
       setState(() {
         _isLoading = false;

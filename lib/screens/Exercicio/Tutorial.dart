@@ -40,19 +40,22 @@ class Tutorial extends StatelessWidget {
             height: 25,
           ),
           if (Uri.parse(exercicioAtual.tutorial['imagem']).isAbsolute)
-            Image.network(
-              exercicioAtual.tutorial['imagem'],
-              height: 250,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+            FadeInImage(
+                height: 250,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                placeholder: AssetImage('assets/images/placeholder.jpg'),
+                image: NetworkImage(
+                  exercicioAtual.tutorial['imagem'],
+                )),
           const SizedBox(
             height: 25,
           ),
           Center(
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(ExercicioScreen.routeName,
+                    Navigator.of(context).pushReplacementNamed(
+                        ExercicioScreen.routeName,
                         arguments: exercicioAtual);
                   },
                   child: Text('Iniciar teste'))),

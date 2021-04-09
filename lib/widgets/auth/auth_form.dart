@@ -150,7 +150,7 @@ class _AuthFormState extends State<AuthForm> {
                 ),
                 Center(
                   child: ElevatedButton(
-                    child: Text(_isLogin ? 'Criar nova conta' : 'Logar'),
+                    child: Text(_isLogin ? 'Criar nova conta' : 'Fazer Login'),
                     onPressed: () {
                       setState(() {
                         _isLogin = !_isLogin;
