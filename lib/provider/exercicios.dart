@@ -6,7 +6,6 @@ class Exercicios with ChangeNotifier {
     Exercicio(
       id: 'alph1',
       titulo: 'Início: Alfabeto',
-      professor: 'Gustavo LR',
       capaUrl:
           'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Green_flag_waving.svg/1200px-Green_flag_waving.svg.png',
       dificuldade: Dificuldade.facil,
@@ -15,7 +14,7 @@ class Exercicios with ChangeNotifier {
       tipoDeExercicio: TipoDeExercicio.alfabeto,
       tutorial: {
         'texto':
-            'Seja bem vindo ao primeiro exercicio do alfabeto, não há necessidade para se apressar, vamos passo-a-passo , e você mesmo irá enxergar o quão simples é',
+            'Seja bem vindo ao primeiro exercicio do alfabeto, neste exercício você irá aprender as letras de A até Z, ouça com atenção todos os cartões a seguir para completar a tarefa. Não precisa ter pressa, vá com calma , e você mesmo irá ver o quão simples é',
         'imagem': 'https://i.imgur.com/MXzF7yV.png'
       },
       exercicio: {
@@ -83,7 +82,6 @@ class Exercicios with ChangeNotifier {
     Exercicio(
       id: 'math2',
       titulo: 'Início: Matematica',
-      professor: 'Gustavo LR',
       capaUrl: 'https://i.ytimg.com/vi/0sEUdmtyJ3U/maxresdefault.jpg',
       dificuldade: Dificuldade.facil,
       falaProfessorUrl:
@@ -91,7 +89,7 @@ class Exercicios with ChangeNotifier {
       tipoDeExercicio: TipoDeExercicio.matematica,
       tutorial: {
         'texto':
-            'Seja bem vindo ao primeiro exercicio do matemática, não há necessidade para se apressar, vamos passo-a-passo , e você mesmo irá enxergar o quão simples é',
+            'Seja bem vindo ao primeiro exercicio do matemática, neste exercício você irá aprender os números de 0 até 20, ouça com atenção todos os cartões a seguir para completar a tarefa. Não precisa ter pressa, vá com calma , e você mesmo irá ver o quão simples é',
         'imagem': 'https://i.imgur.com/Pz5tLyT.png'
       },
       exercicio: {
@@ -120,6 +118,7 @@ class Exercicios with ChangeNotifier {
             '20',
           ],
           'bottom': [
+            'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/mat/0.mp3',
             'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/mat/1.mp3',
             'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/mat/2.mp3',
             'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/mat/3.mp3',

@@ -14,7 +14,6 @@ enum TipoDeExercicio {
 class Exercicio with ChangeNotifier {
   final String id;
   String titulo;
-  String professor;
   String capaUrl;
   Dificuldade dificuldade;
   int tempoEstimado;
@@ -25,7 +24,6 @@ class Exercicio with ChangeNotifier {
 
   Exercicio(
       {this.id = '337',
-      this.professor = 'N/A',
       @required this.falaProfessorUrl,
       this.titulo = 'Exercicio',
       this.capaUrl = '',
