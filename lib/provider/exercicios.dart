@@ -10,7 +10,7 @@ class Exercicios with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Green_flag_waving.svg/1200px-Green_flag_waving.svg.png',
       dificuldade: Dificuldade.facil,
       falaProfessorUrl:
-          'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
+          'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/professor/alf1.mp3',
       tipoDeExercicio: TipoDeExercicio.alfabeto,
       tutorial: {
         'texto':
@@ -85,7 +85,7 @@ class Exercicios with ChangeNotifier {
       capaUrl: 'https://i.ytimg.com/vi/0sEUdmtyJ3U/maxresdefault.jpg',
       dificuldade: Dificuldade.facil,
       falaProfessorUrl:
-          'https://raw.githubusercontent.com/15Horas/erick-app-songs/main/yt1s.com%20-%20Legi%C3%A3o%20Urbana%20Faroeste%20caboclo.mp3',
+          'https://media.githubusercontent.com/media/MysteRys337/educa-flutter/main/assets/professor/mat1.mp3',
       tipoDeExercicio: TipoDeExercicio.matematica,
       tutorial: {
         'texto':
