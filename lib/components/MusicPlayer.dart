@@ -7,14 +7,16 @@ class MusicPlayer extends StatefulWidget {
   final String title;
   final bool autoplay;
   final bool hideSlider;
+  final bool builder;
 
-  const MusicPlayer({
-    Key key,
-    this.title = '',
-    @required this.initialMusicUrl,
-    this.autoplay = true,
-    this.hideSlider = false,
-  }) : super(key: key);
+  const MusicPlayer(
+      {Key key,
+      this.title = '',
+      @required this.initialMusicUrl,
+      this.autoplay = false,
+      this.hideSlider = false,
+      this.builder = false})
+      : super(key: key);
 
   @override
   _MusicPlayerState createState() => _MusicPlayerState();
@@ -52,6 +54,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
     advancedPlayer.onAudioPositionChanged.listen((p) => setState(() {
           _position = p;
         }));
+
+    if (!widget.builder) {
+      this.advancedPlayer.setUrl(widget.initialMusicUrl);
+      this.advancedPlayer.setReleaseMode(ReleaseMode.STOP);
+      this.advancedPlayer.play(widget.initialMusicUrl, isLocal: false);
+      this.isActive = widget.autoplay;
+    }
   }
 
   void deactivate() {
@@ -96,12 +105,13 @@ class _MusicPlayerState extends State<MusicPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      this.advancedPlayer.setUrl(widget.initialMusicUrl);
-      this.advancedPlayer.setReleaseMode(ReleaseMode.STOP);
-      this.advancedPlayer.play(widget.initialMusicUrl, isLocal: false);
-      this.isActive = widget.autoplay;
-    });
+    if (widget.builder)
+      setState(() {
+        this.advancedPlayer.setUrl(widget.initialMusicUrl);
+        this.advancedPlayer.setReleaseMode(ReleaseMode.STOP);
+        this.advancedPlayer.play(widget.initialMusicUrl, isLocal: false);
+        this.isActive = widget.autoplay;
+      });
 
     return SingleChildScrollView(
       child: Column(

@@ -15,13 +15,15 @@ class Perfil extends StatelessWidget {
       this.pontuacaoMath);
 
   Widget build(BuildContext context) {
-    final currTheme = Provider.of<ThemeChanger>(context).currTheme;
+    final themeData = Provider.of<ThemeChanger>(context);
+    final themeColor = themeData.currTheme == ThemeType.light
+        ? Colors.blue[200]
+        : Colors.indigoAccent;
+
     return Column(
       children: [
         Card(
-          color: currTheme == ThemeType.light
-              ? Colors.blue[100]
-              : Colors.indigoAccent,
+          color: themeColor,
           elevation: 8,
           margin: const EdgeInsets.all(8),
           child: Row(
@@ -59,7 +61,11 @@ class Perfil extends StatelessWidget {
                         ),
                         Text(pontuacaoMath.toString()),
                       ],
-                    )
+                    ),
+                    Text(
+                      'Total: ' + (pontuacaoAlph + pontuacaoMath).toString(),
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
                   ],
                 ),
               )

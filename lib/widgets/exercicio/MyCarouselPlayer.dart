@@ -75,7 +75,6 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    print(currentAudio);
     return Padding(
       padding: const EdgeInsets.only(top: 45),
       child: Column(
@@ -108,6 +107,7 @@ class _MyCarouselPlayerState extends State<MyCarouselPlayer> {
                 initialMusicUrl: currentAudio,
                 autoplay: false,
                 hideSlider: true,
+                builder: true,
               )),
         ],
       ),

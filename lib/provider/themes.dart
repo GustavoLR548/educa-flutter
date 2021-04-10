@@ -12,6 +12,7 @@ class ThemeChanger with ChangeNotifier {
   ThemeType _currTheme;
 
   ThemeChanger() {
+    _currTheme = ThemeType.light;
     _lightThemeData = ThemeData(
       primarySwatch: Colors.blue,
       canvasColor: Color(0xFFbbd6ff),
