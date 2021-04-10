@@ -1,17 +1,23 @@
 import 'package:educa/provider/auth.dart';
+import 'package:educa/provider/themes.dart';
+import 'package:educa/screens/Configuration.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   List<Widget> buildDividedListTile(
       BuildContext context, IconData icon, String text, Function f) {
+    final currTheme = Provider.of<ThemeChanger>(context).currTheme;
+    print(currTheme.toString());
     return [
       Divider(),
       ListTile(
-          leading: Icon(icon),
+          leading: Icon(icon,
+              color:
+                  currTheme == ThemeType.light ? Colors.black : Colors.white),
           title: Text(
             text,
-            style: Theme.of(context).textTheme.headline2,
+            style: Theme.of(context).textTheme.headline1,
           ),
           onTap: f)
     ];
@@ -36,7 +42,7 @@ class AppDrawer extends StatelessWidget {
           context,
           Icons.settings,
           'Configurações',
-          null,
+          () => Navigator.of(context).pushNamed(Configuration.routeName),
         ),
         Divider(),
         ListTile(
@@ -48,7 +54,7 @@ class AppDrawer extends StatelessWidget {
               'Logout',
               style: Theme.of(context)
                   .textTheme
-                  .headline2
+                  .headline1
                   .copyWith(color: Colors.red),
             ),
             onTap: () {

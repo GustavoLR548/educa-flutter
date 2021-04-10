@@ -1,5 +1,7 @@
+import 'package:educa/provider/themes.dart';
 import 'package:educa/widgets/misc/circle_fade_in_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Perfil extends StatelessWidget {
   final String imageUrl;
@@ -13,10 +15,13 @@ class Perfil extends StatelessWidget {
       this.pontuacaoMath);
 
   Widget build(BuildContext context) {
+    final currTheme = Provider.of<ThemeChanger>(context).currTheme;
     return Column(
       children: [
         Card(
-          color: Colors.blue[100],
+          color: currTheme == ThemeType.light
+              ? Colors.blue[100]
+              : Colors.indigoAccent,
           elevation: 8,
           margin: const EdgeInsets.all(8),
           child: Row(
