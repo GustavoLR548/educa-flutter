@@ -6,8 +6,8 @@ Um aplicativo educativo feito em Flutter
 
 * [x] Página de login
 * [X] Página principal
-* [ ] Exercício de Matemática 
-* [ ] Exercício do Alfabeto
+* [x] Exercício de Matemática 
+* [x] Exercício do Alfabeto
 
 ## Objetivos opcionais
 
