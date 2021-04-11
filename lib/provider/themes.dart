@@ -13,6 +13,15 @@ class ThemeChanger with ChangeNotifier {
 
   ThemeChanger() {
     _currTheme = ThemeType.light;
+    _setThemesDatas();
+  }
+
+  ThemeChanger.fromBrightness(Brightness b) {
+    _currTheme = b == Brightness.light ? ThemeType.light : ThemeType.dark;
+    _setThemesDatas();
+  }
+
+  _setThemesDatas() {
     _lightThemeData = ThemeData(
       primarySwatch: Colors.blue,
       canvasColor: Color(0xFFbbd6ff),
@@ -95,6 +104,7 @@ class ThemeChanger with ChangeNotifier {
               letterSpacing: 0.5,
               color: Colors.white)),
     );
+    notifyListeners();
   }
 
   ThemeData get themeData {
@@ -110,6 +120,11 @@ class ThemeChanger with ChangeNotifier {
 
   setTheme(ThemeType theme) {
     this._currTheme = theme;
+    notifyListeners();
+  }
+
+  setThemeFromBrightness(Brightness b) {
+    this._currTheme = b == Brightness.light ? ThemeType.light : ThemeType.dark;
     notifyListeners();
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:educa/provider/themes.dart';
 import 'package:educa/widgets/misc/pick_user_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthForm extends StatefulWidget {
   final void Function(String email, String password, String username,
@@ -65,6 +67,7 @@ class _AuthFormState extends State<AuthForm> {
 
   @override
   Widget build(BuildContext context) {
+    final currTheme = Provider.of<ThemeChanger>(context).currTheme;
     Widget confirmButton = (widget._isLoading)
         ? Center(child: CircularProgressIndicator())
         : Center(
@@ -77,7 +80,7 @@ class _AuthFormState extends State<AuthForm> {
       constraints: BoxConstraints(minHeight: _isLogin ? 360 : 530),
       height: _isLogin ? 360 : 530,
       child: Card(
-        color: Colors.indigo[50],
+        color: currTheme == ThemeType.light ? Colors.white : Colors.black45,
         margin: const EdgeInsets.only(bottom: 15, left: 25, right: 25),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         elevation: 8,
